@@ -7,3 +7,15 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+#photo{
+    margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+}
+
+#list{
+    margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+}

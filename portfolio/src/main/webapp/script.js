@@ -27,14 +27,22 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-async function addHello() {
-    const getWord = await fetch('/hello');
-    const textFromResponse = await getWord.text();
+// async function addHello() {
+//     const getWord = await fetch('/hello');
+//     const textFromResponse = await getWord.text();
   
-    const word = document.getElementById('Say');
-    word.innerText = textFromResponse;
-  }
+//     const word = document.getElementById('Say');
+//     word.innerText = textFromResponse;
+//   }
+async function getServerStats() {
+    const responseFromServer = await fetch('/hello');
+    // The json() function returns an object that contains fields that we can
+    // reference to create HTML.
+    const stats = await responseFromServer.json();
+    console.log(stats[0]);
 
+  }
+  
  
   
   

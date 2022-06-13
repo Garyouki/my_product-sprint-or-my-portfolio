@@ -7,6 +7,7 @@
     <script src="script.js"></script>
   </head>
   <body>
+    
     <div id="content">
       <h1>My Portfolio</h1>
       <p>This is Gary's portfolio.</p>
@@ -29,7 +30,7 @@
         <p>Here are some projects I have done</p>
         <ul>
             <li>Github Clone</li>
-            <li>Food recipe</li>
+            <li>Chinese Food recipe</li>
             <li>Todo List</li>
         </ul>
 
@@ -39,5 +40,24 @@
     <h1>This is my favorite sports team</h1>
     <img src="/Image/download.png" />
     </div>
+    <div>
+        <button onclick="addHello();">
+            Say Hello
+          </button>
+          <p id="Say"></p>
+    </div>
+
+    <div id="content">
+        <h1>Server Stats</h1>
+        <p>Click here to add server statistics to this page:</p>
+        <button onclick="getServerStats()">Fetch server stats!</button>
+      </div>
+
+      <form action="/form-handler" method="POST">
+        <p>Enter your favorite sports see if we can be friends:</p>
+        <textarea name="text-input">hello world</textarea>
+        <br/>
+        <input type="submit" />
+      </form>
   </body>
 </html>

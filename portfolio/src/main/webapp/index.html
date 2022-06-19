@@ -76,6 +76,31 @@
       </select>
       <button>Submit</button>
     </form>
+
+
+    <h1>Image Upload Analysis</h1>
+
+    <form action="/image-analysis" method="POST" enctype="multipart/form-data">
+      <p>Upload an image:</p>
+      <input type="file" name="image">
+      <br/><br/>
+      <button>Submit</button>
+    </form>
+
+    <h1>Cloud Storage Hello World Example</h1>
+    <p>Type a message and click submit:</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <p>Type some text:</p>
+      <textarea name="message"></textarea>
+      <br/>
+      <p>Upload an image:</p>
+      <input type="file" name="image">
+      <br/><br/>
+      <button>Submit</button>
+    </form>
+
+    <p><a href="/list-images">Click here to see all of the uploaded images!</a></p>
   </body>
 
   

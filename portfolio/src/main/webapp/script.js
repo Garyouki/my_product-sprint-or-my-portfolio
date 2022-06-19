@@ -42,6 +42,33 @@ async function getServerStats() {
     console.log(stats[0]);
 
   }
+
+
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  /** Fetches color data and uses it to create a chart. */
+  function drawChart() {
+    fetch('/color-data').then(response => response.json())
+    .then((colorVotes) => {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Color');
+      data.addColumn('number', 'Votes');
+      Object.keys(colorVotes).forEach((color) => {
+        data.addRow([color, colorVotes[color]]);
+      });
+  
+      const options = {
+        'title': 'Favorite Colors',
+        'width':600,
+        'height':500
+      };
+  
+      const chart = new google.visualization.LineChart(
+          document.getElementById('chart-container'));
+      chart.draw(data, options);
+    });
+  }
   
  
   

@@ -42,7 +42,59 @@ async function getServerStats() {
     console.log(stats[0]);
 
   }
+
+
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
   
- 
+  /** Fetches color data and uses it to create a chart. */
+  function drawChart() {
+    fetch('/color-data').then(response => response.json())
+    .then((colorVotes) => {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Color');
+      data.addColumn('number', 'Votes');
+      Object.keys(colorVotes).forEach((color) => {
+        data.addRow([color, colorVotes[color]]);
+      });
+  
+      const options = {
+        'title': 'Favorite Colors',
+        'width':600,
+        'height':500
+      };
+  
+      const chart = new google.visualization.LineChart(
+          document.getElementById('chart-container'));
+      chart.draw(data, options);
+    });
+  }
+  
+  function createMap() {
+    const map = new google.maps.Map(
+        document.getElementById('map'),
+        {center: {lat: 37.422, lng: -122.084}, zoom: 16});
+  }
+
+  function loadTasks() {
+    fetch('/list-tasks').then(response => response.json()).then((tasks) => {
+      const taskListElement = document.getElementById('task-list');
+      tasks.forEach((task) => {
+        taskListElement.appendChild(createTaskElement(task));
+      })
+    });
+  }
+  
+  /** Creates an element that represents a task, including its delete button. */
+  function createTaskElement(task) {
+    const taskElement = document.createElement('li');
+    taskElement.className = 'task';
+  
+    const titleElement = document.createElement('span');
+    titleElement.innerText = task.title;
+    taskElement.appendChild(titleElement);
+    return titleElement;
+  }
+  
   
   

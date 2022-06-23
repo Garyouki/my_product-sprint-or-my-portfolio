@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Gary's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
@@ -51,7 +52,7 @@
         <h1>Server Stats</h1>
         <p>Click here to add server statistics to this page:</p>
         <button onclick="getServerStats()">Fetch server stats!</button>
-      </div>
+    </div>
 
       <form action="/form-handler" method="POST">
         <p>Enter your favorite sports see if we can be friends:</p>
@@ -59,5 +60,74 @@
         <br/>
         <input type="submit" />
       </form>
+
+
+    <h1>Favorite Colors</h1>
+    <div id="chart-container"></div>
+    <h2>Vote</h2>
+    <form action="/color-data" method="POST">
+      <select name="color">
+        <option value="Red">Red</option>
+        <option value="Orange">Orange</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+        <option value="Violet">Violet</option>
+      </select>
+      <button>Submit</button>
+    </form>
+
+    <head>
+        <title>Hello Google Maps</title>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvrRdeisNkCdbV43wry3M-7k0mxWChKI"></script>
+        <!-- <script src="script.js"></script> -->
+        <link rel="stylesheet" href="style.css">
+      </head>
+      <body onload="createMap();">
+        <h1>Hello Google Maps</h1>
+        <div id="map"></div>
+        <p>This page shows a Google Map!</p>
+      </body>
+
+    <h1>Image Upload Analysis</h1>
+
+    <form action="/image-analysis" method="POST" enctype="multipart/form-data">
+      <p>Upload an image:</p>
+      <input type="file" name="image">
+      <br/><br/>
+      <button>Submit</button>
+    </form>
+
+    <h1>Cloud Storage Hello World Example</h1>
+    <p>Type a message and click submit:</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <p>Type some text:</p>
+      <textarea name="message"></textarea>
+      <br/>
+      <p>Upload an image:</p>
+      <input type="file" name="image">
+      <br/><br/>
+      <button>Submit</button>
+    </form>
+
+    <p><a href="/list-images">Click here to see all of the uploaded images!</a></p>
+
+    <body onload="loadTasks()">
+        <h1>Contact information</h1>
+    
+        <form method="POST" action="/new-task">
+          <input type="text" name="title" />
+          <br/>
+          <button>Submit</button>
+        </form>
+    
+        <hr/>
+    
+        <ul id="task-list"></ul>
+    
+      </body>
   </body>
+
+  
 </html>
